@@ -10,14 +10,12 @@ pub fn main() anyerror!void {
     var sum: usize = 0;
     var sum2: usize = 0;
     while (try stream.readUntilDelimiterOrEof(&buf, '\n')) |line| {
-        const mass = try std.fmt.parseInt(usize, line, 10);
+        var mass = try std.fmt.parseInt(usize, line, 10);
         sum += (mass / 3) - 2;
-        var fuel = mass;
-        while (fuel > 6) {
-            fuel = (fuel / 3) - 2;
-            sum2 += fuel;
+        while (mass > 6) {
+            mass = (mass / 3) - 2;
+            sum2 += mass;
         }
     }
-    warn("part 1: {}\n", sum);
-    warn("part 2: {}\n", sum2);
+    warn("part 1: {}\npart 2: {}\n", sum, sum2);
 }

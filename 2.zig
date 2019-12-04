@@ -7,7 +7,7 @@ fn run(program: []u32, noun: u32, verb: u32) !u32 {
     var pc: usize = 0;
     program[1] = noun;
     program[2] = verb;
-    while (pc < program.len) : (pc += 4) {
+    while (true) : (pc += 4) {
         const op1 = program[pc + 1];
         const op2 = program[pc + 2];
         const dest = program[pc + 3];
