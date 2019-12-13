@@ -52,7 +52,7 @@ pub fn main() !void {
     defer curs.deinit();
     _ = try curs.append(.{ .e = "YOU", .d = 0 });
     while (curs.len > 0) {
-        const cur = curs.orderedRemove(0);
+        const cur = curs.orderedRemove(0); // pop left
         if (dists.contains(cur.e)) continue;
         _ = try dists.put(cur.e, cur.d);
         if (graph_bidir.get(cur.e)) |_y| {
